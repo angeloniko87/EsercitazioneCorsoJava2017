@@ -1,53 +1,97 @@
 package progetti.automobile.v1;
 
 public class Automobile {
-	
-	private int velocitaMassima;
-	private int velocita;
 	private String marca;
-	private double cilindrata;
 	private String modello;
+	private double cilindrata;
+	private int anno;
+	private double velocita;
+	private double velocitaMassima;
+	private boolean accesa;
 	
-	
-	
-	
-	public Automobile(String marca, String modello, double cilindrata) {
-		
-		this.marca=marca;
-		this.modello=modello;
-		this.cilindrata=cilindrata;
-		
+	public Automobile(String marca, String modello, double cicindrata) {
+		this.marca = marca;
+		this.modello = modello;
+		this.cilindrata = cilindrata;
 	}
-
-	public void setVelocitaMassima(int i) {
-		this.velocitaMassima=i;
-		
+	
+	public String getMarca() {
+		return marca;
 	}
-
-	public int getVelocita() {
-		velocita=0;
-		
+	
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+	
+	public String getModello() {
+		return modello;
+	}
+	
+	public void setModello(String modello) {
+		this.modello = modello;
+	}
+	
+	public double getCilindrata() {
+		return cilindrata;
+	}
+	
+	public void setCilindrata(double cilindrata) {
+		this.cilindrata = cilindrata;
+	}
+	
+	public int getAnno() {
+		return anno;
+	}
+	
+	public void setAnno(int anno) {
+		this.anno = anno;
+	}
+	
+	public double getVelocita() {
 		return velocita;
 	}
-
+	
+	public double getVelocitaMassima() {
+		return velocitaMassima;
+	}
+	
+	public void setVelocitaMassima(double velocitaMassima) {
+		this.velocitaMassima = velocitaMassima;
+	}
+	
 	public boolean isAccesa() {
-		// TODO Auto-generated method stub
+		return accesa;
+	}
+	
+	public void accendi() {
+		accesa = true;
+	}
+	
+	public void spegni() {
+		accesa = false;
+		velocita = 0;
+	}
+	
+	public boolean frena() {
+		if (isAccesa() && velocita > 0) { 
+			velocita = velocita - 1; 
+		}
+		
+		if (velocita > 0) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean accelera() {
+		
+		if (isAccesa() && velocita < velocitaMassima) {
+			velocita = velocita + 1;
+		}
+		
+		if (velocita < velocitaMassima) {
+			return true;
+		}
 		return false;
 	}
-
-	public String getMarca() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getCilindrata() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getModello() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
